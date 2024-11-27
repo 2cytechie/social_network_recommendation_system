@@ -6,13 +6,17 @@
 
 #include "util.h"
 
+#include "start_screen.h"
+
 using namespace std;
 
 IMAGE white_screen;				// 空白界面
 
-Button button1(100, 100);
-Button button2(500, 100);
-Button button3(1000, 100);
+StartScreen start_screen;
+Screen* friends_screen = nullptr;
+Screen* search_friend_screen = nullptr;
+Screen* add_interests_screen = nullptr;
+Screen* recommendations_screen = nullptr;
 
 void load_resources() {
 	AddFontResourceEx(_T("resources/IPix.ttf"), FR_PRIVATE, NULL);
@@ -41,6 +45,11 @@ int main() {
 
 	bool is_running = true;
 
+	// 实例化
+	
+
+
+
 	BeginBatchDraw();
 
 	load_resources();
@@ -49,20 +58,21 @@ int main() {
 		steady_clock::time_point frame_start = steady_clock::now();
 		duration<float> delta = duration<float>(frame_start - last_tick);
 
+
+
+		start_screen.on_enter();
 		// 数据更新
 		while (peekmessage(&msg)) {
-
+			start_screen.on_input(msg);
 		}
+
+		
 
 
 		// 绘制图像
 		putimage(0, 0, &white_screen);
 
-
-
-		drow_idle_button(button1);
-		drow_touch_button(button2);
-		drow_press_button(button3);
+		start_screen.on_drow();
 
 
 		FlushBatchDraw();

@@ -22,6 +22,14 @@ public:
 		data_pos = Vector2(0, 0);
 	}
 
+	Button() {
+		pos.x = 0;
+		pos.y = 0;
+		size.x = 130;
+		size.y = 45;
+		data_pos = Vector2(0, 0);
+	}
+
 	Button(int x, int y, int w, int h) {
 		pos.x = x;
 		pos.y = y;
@@ -61,22 +69,6 @@ public:
 		pos.y = y;
 	}
 
-	bool get_press() {
-		return is_press;
-	}
-
-	void set_press(bool flag) {
-		is_press = flag;
-	}
-
-	bool get_touch() {
-		return is_touch;
-	}
-
-	void set_touch(bool flag) {
-		is_touch = flag;
-	}
-
 	bool mouse_in_button(const Vector2 mouse_pos) {
 		return mouse_pos.x > pos.x && (mouse_pos.x < pos.x + size.x)
 			&& mouse_pos.y > pos.y && (mouse_pos.y < pos.y + size.y);
@@ -94,10 +86,10 @@ public:
 		this->data = data;
 	}
 
-	void on_drow(ButtonState state) {
-		data_pos.x = (pos.x - textwidth(data)) / 2;
-		data_pos.y = (pos.y - textheight(data)) / 2;
-		switch (state)
+	void on_drow() {
+		data_pos.x = pos.x + (size.x - textwidth(data)) / 2;
+		data_pos.y = pos.y + (size.y - textheight(data)) / 2;
+		switch (button_state)
 		{
 		case Button::ButtonState::idle:
 			setfillcolor(RGB(245, 245, 245));
@@ -115,22 +107,14 @@ public:
 			break;
 		}
 
-		outtextxy_shaded(data_pos.x, data_pos.y, data);
+		settextcolor(RGB(0, 0, 0));
+		outtextxy(data_pos.x, data_pos.y, data);
 	}
 
-private:
-	void outtextxy_shaded(int x, int y, LPCTSTR str) {
-		settextcolor(RGB(45, 4, 45));
-		outtextxy(x + 3, y + 3, str);
-		settextcolor(RGB(225, 225, 225));
-		outtextxy(x, y, str);
-	}
 
 private:
 	Vector2 pos;
 	Vector2 size;
-	bool is_press = false;								// 鼠标按下
-	bool is_touch = false;								// 鼠标放在按钮上
 	ButtonState button_state = ButtonState::idle;		// 默认闲置状态
 	LPCTSTR data = _T("");								// 按钮上文字
 	Vector2 data_pos;									// 文字位置

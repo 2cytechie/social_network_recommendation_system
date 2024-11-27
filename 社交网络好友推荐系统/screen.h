@@ -10,13 +10,18 @@ public:
 
 	// 进入界面
 	virtual void on_enter() {}
-	// 更新界面
-	virtual void on_update(double delta) {}
 	// 绘制界面
 	virtual void on_drow() {}
 	// 鼠标键盘输入
-	virtual void on_input() {}
-	// 退出界面
-	virtual void on_exit() {}
+	virtual void on_input(const ExMessage& msg) {}
+
+	bool get_is_back() {
+		return is_back;
+	}
+
+private:
+	bool is_back = false;				// 返回上一个界面
+
+public:
 
 };

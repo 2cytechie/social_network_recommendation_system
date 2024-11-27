@@ -33,6 +33,9 @@
     <ClCompile Include="interests_tree.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="start_screen.cpp">
+      <Filter>头文件\screen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="people.h">
@@ -64,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="vector2.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="recommendations.h">
+      <Filter>头文件\screen</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
