@@ -22,6 +22,4 @@ public:
 private:
 	bool is_back = false;				// 返回上一个界面
 
-public:
-
 };

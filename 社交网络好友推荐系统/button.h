@@ -1,9 +1,7 @@
 #pragma once
 
 #include "vector2.h"
-#include "util.h"
 #include<graphics.h>
-#include<string>
 
 class Button {
 public:
@@ -13,13 +11,17 @@ public:
 		press
 	};
 
+	enum class ButtonType {
+		center,				// 居中
+		left				// 左对齐
+	};
+
 public:
 	Button(int x,int y) {
 		pos.x = x;
 		pos.y = y;
 		size.x = 130;
 		size.y = 45;
-		data_pos = Vector2(0, 0);
 	}
 
 	Button() {
@@ -27,7 +29,6 @@ public:
 		pos.y = 0;
 		size.x = 130;
 		size.y = 45;
-		data_pos = Vector2(0, 0);
 	}
 
 	Button(int x, int y, int w, int h) {
@@ -35,19 +36,15 @@ public:
 		pos.y = y;
 		size.x = w;
 		size.y = h;
-		data_pos = Vector2(0, 0);
 	}
 
 	~Button() = default;
 
-	// 按下
-	virtual void press() {}
-
-	Vector2 get_pos() {
+	Vector2 get_pos() const {
 		return pos;
 	}
 
-	Vector2 get_size() {
+	Vector2 get_size() const {
 		return size;
 	}
 
@@ -74,7 +71,7 @@ public:
 			&& mouse_pos.y > pos.y && (mouse_pos.y < pos.y + size.y);
 	}
 
-	ButtonState get_button_state() {
+	ButtonState get_button_state() const {
 		return button_state;
 	}
 
@@ -82,13 +79,36 @@ public:
 		button_state = state;
 	}
 
+	void set_button_tpye(ButtonType state) {
+		button_tpye = state;
+	}
+
 	void set_data(LPCTSTR data) {
 		this->data = data;
 	}
 
+	bool is_press() {
+		return button_state == ButtonState::press;
+	}
+
+	// 绘制
 	void on_drow() {
-		data_pos.x = pos.x + (size.x - textwidth(data)) / 2;
-		data_pos.y = pos.y + (size.y - textheight(data)) / 2;
+		// 计算文字打印位置
+		switch (button_tpye)
+		{
+		case Button::ButtonType::center:
+			data_pos.x = pos.x + (size.x - textwidth(data)) / 2;
+			data_pos.y = pos.y + (size.y - textheight(data)) / 2;
+			break;
+		case Button::ButtonType::left:
+			data_pos.x = pos.x + 50;
+			data_pos.y = pos.y + (size.y - textheight(data)) / 2;
+			break;
+		default:
+			break;
+		}
+
+		// 根据按钮不同状态显示不同颜色，实现鼠标放在按钮上变灰，按下变黑
 		switch (button_state)
 		{
 		case Button::ButtonState::idle:
@@ -106,9 +126,22 @@ public:
 		default:
 			break;
 		}
-
+		// 绘制文字
 		settextcolor(RGB(0, 0, 0));
 		outtextxy(data_pos.x, data_pos.y, data);
+	}
+
+	void on_update(const ExMessage msg) {
+		Vector2 mouse_pos(msg.x, msg.y);
+		if (mouse_in_button(mouse_pos)) {
+			button_state = Button::ButtonState::touch;
+			if (msg.message == WM_LBUTTONDOWN) {
+				button_state = Button::ButtonState::press;
+			}
+		}
+		else {
+			button_state = Button::ButtonState::idle;
+		}
 	}
 
 
@@ -116,6 +149,7 @@ private:
 	Vector2 pos;
 	Vector2 size;
 	ButtonState button_state = ButtonState::idle;		// 默认闲置状态
+	ButtonType button_tpye = ButtonType::center;		// 默认居中
 	LPCTSTR data = _T("");								// 按钮上文字
 	Vector2 data_pos;									// 文字位置
 

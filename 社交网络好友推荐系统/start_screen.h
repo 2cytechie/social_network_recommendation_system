@@ -41,4 +41,5 @@ private:
 	Button friends;								// 好友列表
 	Button add_interests;						// 添加爱好
 	Button recommendations;						// 查看推荐
+
 };

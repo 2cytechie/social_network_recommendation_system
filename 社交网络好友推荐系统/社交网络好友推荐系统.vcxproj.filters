@@ -36,6 +36,9 @@
     <ClCompile Include="start_screen.cpp">
       <Filter>头文件\screen</Filter>
     </ClCompile>
+    <ClCompile Include="search_friend_screen.cpp">
+      <Filter>头文件\screen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="people.h">

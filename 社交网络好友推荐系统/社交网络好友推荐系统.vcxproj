@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="interests_tree.cpp" />
+    <ClCompile Include="search_friend_screen.cpp" />
     <ClCompile Include="start_screen.cpp" />
     <ClCompile Include="Tree.cpp" />
     <ClCompile Include="util.h" />
