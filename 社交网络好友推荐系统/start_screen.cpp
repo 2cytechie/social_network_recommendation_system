@@ -3,22 +3,24 @@
 
 	// 进入界面
 void StartScreen::on_enter() {
-		search_friend.set_data(_T("搜索好友"));
-		search_friend.set_pos(60, 650);
-		search_friend.set_size(160, 80);
+	const Vector2 BUTTON_FUN_SIZE(160, 70);
+	const int BUTTON_FUN_Y = 640;
 
-		friends.set_data(_T("好友列表"));
-		friends.set_pos(380, 650);
-		friends.set_size(160, 80);
+	search_friend.set_data(_T("搜索好友"));
+	search_friend.set_pos(BUTTON_FUN_SIZE.x/2, BUTTON_FUN_Y);
+	search_friend.set_size(BUTTON_FUN_SIZE);
 
-		add_interests.set_data(_T("添加爱好"));
-		add_interests.set_pos(700, 650);
-		add_interests.set_size(160, 80);
+	friends.set_data(_T("好友列表"));
+	friends.set_pos(BUTTON_FUN_SIZE.x * 5 / 2, BUTTON_FUN_Y);
+	friends.set_size(BUTTON_FUN_SIZE);
 
-		recommendations.set_data(_T("查看推荐"));
-		recommendations.set_pos(1020, 650);
-		recommendations.set_size(160, 80);
+	add_interests.set_data(_T("添加爱好"));
+	add_interests.set_pos(BUTTON_FUN_SIZE.x * 9 / 2, BUTTON_FUN_Y);
+	add_interests.set_size(BUTTON_FUN_SIZE);
 
+	recommendations.set_data(_T("查看推荐"));
+	recommendations.set_pos(BUTTON_FUN_SIZE.x * 13 / 2, BUTTON_FUN_Y);
+	recommendations.set_size(BUTTON_FUN_SIZE);
 
 	}
 
@@ -62,6 +64,9 @@ void StartScreen::on_input(const ExMessage& msg) {
 void StartScreen::switch_to(ScreenType type) {
 	switch (type)
 	{
+	case StartScreen::ScreenType::start:
+		current_screen = nullptr;
+		break;
 	case StartScreen::ScreenType::friends:
 		current_screen = friends_screen;
 		break;
@@ -77,5 +82,5 @@ void StartScreen::switch_to(ScreenType type) {
 	default:
 		break;
 	}
-	current_screen->on_enter();
+	if (current_screen != nullptr) current_screen->on_enter();
 }

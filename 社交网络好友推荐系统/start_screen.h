@@ -14,6 +14,7 @@ public:
 	~StartScreen() = default;
 
 	enum class ScreenType {
+		start,
 		friends,
 		search_friend,
 		add_interests,

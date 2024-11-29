@@ -24,20 +24,20 @@
     <ClCompile Include="社交网络好友推荐系统.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Tree.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="util.h">
       <Filter>头文件</Filter>
-    </ClCompile>
-    <ClCompile Include="interests_tree.cpp">
-      <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="start_screen.cpp">
       <Filter>头文件\screen</Filter>
     </ClCompile>
     <ClCompile Include="search_friend_screen.cpp">
       <Filter>头文件\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="interests_tree.cpp">
+      <Filter>头文件\Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="Tree.cpp">
+      <Filter>头文件\Tree</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

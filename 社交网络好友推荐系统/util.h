@@ -46,19 +46,36 @@ inline std::string get_new_id() {
     return new_id;
 }
 
-inline std::vector<Button*> search_friends(wchar_t* search_str) {
+// 主要对Button中的data进行赋值
+inline std::vector<Button*> search_friends(wchar_t* search_str,bool is_id_search) {
     // 搜索文件中匹配的用户
     std::vector<Button*> search_friends_list;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 9; i++) {
 
 
         // 别忘delete
 
 
-        Button* search_friend = new Button(10, i * 80, 1100, 80);
+        Button* search_friend = new Button();
         search_friends_list.push_back(search_friend);
     }
     return search_friends_list;
+}
+
+// 主要对Button中的data进行赋值
+inline std::vector<Button*> is_friend(std::vector<Button*> search_friends_list) {
+    const LPCTSTR add_str = _T("添加好友");
+    const LPCTSTR is_add_str = _T("已添加");
+
+    std::vector<Button*> button_is_friend;
+    for (int i = 0; i < 9; i++) {
+        Button* is_friend = new Button();
+
+        is_friend->set_data(is_add_str);
+        button_is_friend.push_back(is_friend);
+    }
+    
+    return button_is_friend;
 }
 
 inline void putimage_alpha(int dst_x, int dst_y, IMAGE* img) {

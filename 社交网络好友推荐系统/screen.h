@@ -15,6 +15,9 @@ public:
 	// 鼠标键盘输入
 	virtual void on_input(const ExMessage& msg) {}
 
+	// 退出界面
+	virtual void on_exit() {}
+
 	bool get_is_back() {
 		return is_back;
 	}
