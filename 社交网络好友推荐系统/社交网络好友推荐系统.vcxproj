@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="friends_screen.cpp" />
     <ClCompile Include="interests_tree.cpp" />
     <ClCompile Include="recommendations_screen.cpp" />
     <ClCompile Include="search_friend_screen.cpp" />

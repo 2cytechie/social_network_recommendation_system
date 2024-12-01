@@ -7,6 +7,8 @@
 #include "start_screen.h"
 #include "search_friend_screen.h"
 #include "recommendations_screen.h"
+#include "add_interests_screen.h"
+#include "friends_screen.h"
 
 IMAGE white_screen;							// 空白界面图片
 
@@ -42,6 +44,8 @@ int main() {
 	// 实例化
 	search_friend_screen = new SearchFriendScreen();
 	recommendations_screen = new RecommendationsScreen();
+	add_interests_screen = new AddInterestsScreen();
+	friends_screen = new FriendsScreen();
 
 	BeginBatchDraw();
 

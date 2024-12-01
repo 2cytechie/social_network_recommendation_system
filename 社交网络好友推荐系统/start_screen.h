@@ -44,6 +44,6 @@ private:
 	Button add_interests;									// 添加爱好
 	Button recommendations;									// 查看推荐
 
-	const Vector2 BUTTON_FUN_SIZE = Vector2(160, 70);		// 按钮大小
-	const int BUTTON_FUN_Y = 640;							// 按钮Y坐标
+	const Vector2 BUTTON_FUN_SIZE = Vector2(160, 70);		// 功能键按钮大小
+	const int BUTTON_FUN_Y = 640;							// 功能键按钮Y坐标
 };

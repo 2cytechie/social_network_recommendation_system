@@ -3,7 +3,6 @@
 
 #include "start_screen.h"
 #include "util.h"
-#include<vector>
 
 extern StartScreen start_screen;					// 开始界面
 

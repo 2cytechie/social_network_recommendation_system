@@ -6,7 +6,7 @@
 #include<vector>
 
 extern StartScreen start_screen;					// 开始界面
-// extern People myself;								// 该用户信息
+// extern People myself;							// 该用户信息
 
 class RecommendationsScreen :public Screen {
 public:

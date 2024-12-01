@@ -93,6 +93,20 @@ inline std::vector<Button*> recommendations_friends() {
     return recommendations_friends_list;
 }
 
+inline std::vector<Button*> find_friends() {
+
+
+    std::vector<Button*> friends_list;
+    for (int i = 0; i < 10; i++) {
+        Button* Friend = new Button();
+        Friend->set_data(_T("ºÃÅóÓÑ£¿"));
+
+        friends_list.push_back(Friend);
+    }
+
+    return friends_list;
+}
+
 inline void putimage_alpha(int dst_x, int dst_y, IMAGE* img) {
     int w = img->getwidth();
     int h = img->getheight();

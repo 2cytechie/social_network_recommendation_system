@@ -18,4 +18,7 @@ public:
 	// ÍË³ö½çÃæ
 	virtual void on_exit() {}
 
+private:
+
+
 };

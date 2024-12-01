@@ -42,6 +42,9 @@
     <ClCompile Include="recommendations_screen.cpp">
       <Filter>头文件\screen</Filter>
     </ClCompile>
+    <ClCompile Include="friends_screen.cpp">
+      <Filter>头文件\screen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="people.h">
