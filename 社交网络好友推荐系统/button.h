@@ -52,7 +52,7 @@ public:
 		this->size = size;
 	}
 
-	void set_size(float x, float y) {
+	void set_size(int x, int y) {
 		size.x = x;
 		size.y = y;
 	}
@@ -61,7 +61,7 @@ public:
 		this->pos = pos;
 	}
 
-	void set_pos(float x, float y) {
+	void set_pos(int x, int y) {
 		pos.x = x;
 		pos.y = y;
 	}

@@ -8,6 +8,7 @@
 #include<vector>
 
 #include "button.h"
+// #include "people.h"
 
 const int MAX_ID_LEN = 8;    // id最大长度
 
@@ -54,9 +55,9 @@ inline std::vector<Button*> search_friends(wchar_t* search_str,bool is_id_search
 
 
         // 别忘delete
-
-
         Button* search_friend = new Button();
+        search_friend->set_data(_T("吹牛逼呢！！！"));
+
         search_friends_list.push_back(search_friend);
     }
     return search_friends_list;
@@ -76,6 +77,20 @@ inline std::vector<Button*> is_friend(std::vector<Button*> search_friends_list) 
     }
     
     return button_is_friend;
+}
+
+inline std::vector<Button*> recommendations_friends() {
+
+
+    std::vector<Button*> recommendations_friends_list;
+    for (int i = 0; i < 10; i++) {
+        Button* recommendations_friend = new Button();
+        recommendations_friend->set_data(_T("早上好！"));
+
+        recommendations_friends_list.push_back(recommendations_friend);
+    }
+
+    return recommendations_friends_list;
 }
 
 inline void putimage_alpha(int dst_x, int dst_y, IMAGE* img) {

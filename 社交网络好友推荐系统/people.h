@@ -15,7 +15,6 @@ public:
 	People(std::string name) {
 		id = get_new_id();
 		this->name = name;
-		
 	}
 
 	~People() {}
@@ -28,6 +27,14 @@ public:
 		return name;
 	}
 
+	void set_name(std::string name) {
+		this->name = name;
+	}
+
+	InterestsTree get_interests() {
+		return interests;
+	}
+
 
 	// 更新用户权重
 	void update(std::string data) {
@@ -35,4 +42,3 @@ public:
 	}
 
 };
-

@@ -4,14 +4,13 @@
 #include<chrono>
 #include<thread>
 
-#include "util.h"
-
 #include "start_screen.h"
 #include "search_friend_screen.h"
-
-using namespace std;
+#include "recommendations_screen.h"
 
 IMAGE white_screen;							// 空白界面图片
+
+// People myself("空白");					// 该用户信息
 
 StartScreen start_screen;					// 开始界面
 Screen* friends_screen = nullptr;			// 好有列表界面
@@ -42,6 +41,7 @@ int main() {
 
 	// 实例化
 	search_friend_screen = new SearchFriendScreen();
+	recommendations_screen = new RecommendationsScreen();
 
 	BeginBatchDraw();
 

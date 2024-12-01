@@ -2,6 +2,7 @@
 
 #include "screen.h"
 #include "button.h"
+// #include "people.h"
 
 extern Screen* friends_screen;
 extern Screen* search_friend_screen;
@@ -38,9 +39,11 @@ public:
 private:
 	Screen* current_screen = nullptr;
 
-	Button search_friend;						// 查找好友按钮
-	Button friends;								// 好友列表
-	Button add_interests;						// 添加爱好
-	Button recommendations;						// 查看推荐
+	Button search_friend;									// 查找好友按钮
+	Button friends;											// 好友列表
+	Button add_interests;									// 添加爱好
+	Button recommendations;									// 查看推荐
 
+	const Vector2 BUTTON_FUN_SIZE = Vector2(160, 70);		// 按钮大小
+	const int BUTTON_FUN_Y = 640;							// 按钮Y坐标
 };

@@ -3,9 +3,6 @@
 
 	// 进入界面
 void StartScreen::on_enter() {
-	const Vector2 BUTTON_FUN_SIZE(160, 70);
-	const int BUTTON_FUN_Y = 640;
-
 	search_friend.set_data(_T("搜索好友"));
 	search_friend.set_pos(BUTTON_FUN_SIZE.x/2, BUTTON_FUN_Y);
 	search_friend.set_size(BUTTON_FUN_SIZE);

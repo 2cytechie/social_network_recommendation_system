@@ -18,11 +18,4 @@ public:
 	// 退出界面
 	virtual void on_exit() {}
 
-	bool get_is_back() {
-		return is_back;
-	}
-
-private:
-	bool is_back = false;				// 返回上一个界面
-
 };

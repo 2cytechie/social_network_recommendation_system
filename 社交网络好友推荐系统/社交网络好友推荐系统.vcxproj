@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="interests_tree.cpp" />
+    <ClCompile Include="recommendations_screen.cpp" />
     <ClCompile Include="search_friend_screen.cpp" />
     <ClCompile Include="start_screen.cpp" />
     <ClCompile Include="Tree.cpp" />
@@ -140,7 +141,7 @@
     <ClInclude Include="friends_screen.h" />
     <ClInclude Include="interests_tree.h" />
     <ClInclude Include="people.h" />
-    <ClInclude Include="recommendations.h" />
+    <ClInclude Include="recommendations_screen.h" />
     <ClInclude Include="screen.h" />
     <ClInclude Include="search_friend_screen.h" />
     <ClInclude Include="start_screen.h" />

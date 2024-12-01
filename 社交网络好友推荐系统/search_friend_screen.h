@@ -1,7 +1,6 @@
 #pragma once
 // 搜索好友，查看推荐
 
-#include "screen.h"
 #include "start_screen.h"
 #include "util.h"
 #include<vector>
@@ -29,11 +28,11 @@ public:
 	void on_exit();
 
 private:
-	wchar_t input_str[MAX_ID_LEN];					// 输入文本
-	SearchType search_type;							// 搜索类型
-	std::vector<Button*> search_friends_list;		// 搜索到的好友
-	std::vector<Button*> button_is_add;				// 添加/已添加按键
-	Button button_back;								// 返回键
+	wchar_t input_str[MAX_ID_LEN] = _T("");				// 输入文本
+	SearchType search_type = SearchType::name;			// 初始化搜索类型为名字
+	std::vector<Button*> search_friends_list;			// 搜索到的好友
+	std::vector<Button*> button_is_add;					// 添加/已添加按键
+	Button button_back;									// 返回键
 
 
 	const int MAX_SHOW_SIZE = 9;						// 显示最大用户信息
