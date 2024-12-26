@@ -18,7 +18,7 @@ class FriendsScreen :public Screen {
 
 private:
 	std::vector<Button*> friends_list;					// 好友列表
-	std::vector<Button*> button_is_add;					// 添加/已添加按键
+	std::vector<Button*> button_is_firend;				// 添加/已添加按键
 	Button button_back;									// 返回键
 
 	const int MAX_SHOW_SIZE = 9;						// 显示最大用户信息

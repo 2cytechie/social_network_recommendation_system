@@ -49,7 +49,7 @@ int main() {
 
 	BeginBatchDraw();
 
-	load_resources();			// 加载图片资源
+	load_resources();			// 加载资源
 	start_screen.on_enter();
 
 	while (is_running) {

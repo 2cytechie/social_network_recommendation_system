@@ -29,15 +29,11 @@ public:
 	// 鼠标键盘输入
 	void on_input(const ExMessage& msg);
 
-	void set_current_screen(Screen* screen) {
-		current_screen = screen;
-		current_screen->on_enter();
-	}
-
+	// 选择界面
 	void switch_to(ScreenType type);
 
 private:
-	Screen* current_screen = nullptr;
+	Screen* current_screen = nullptr;						// 当前显示的界面
 
 	Button search_friend;									// 查找好友按钮
 	Button friends;											// 好友列表
