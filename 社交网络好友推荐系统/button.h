@@ -11,7 +11,7 @@ public:
 		press
 	};
 
-	enum class ButtonType {
+	enum class TextType {
 		center,				// 居中
 		left				// 左对齐
 	};
@@ -79,7 +79,7 @@ public:
 		button_state = state;
 	}
 
-	void set_button_tpye(ButtonType state) {
+	void set_button_tpye(TextType state) {
 		button_tpye = state;
 	}
 
@@ -96,11 +96,11 @@ public:
 		// 计算文字打印位置
 		switch (button_tpye)
 		{
-		case Button::ButtonType::center:
+		case Button::TextType::center:
 			data_pos.x = pos.x + (size.x - textwidth(data)) / 2;
 			data_pos.y = pos.y + (size.y - textheight(data)) / 2;
 			break;
-		case Button::ButtonType::left:
+		case Button::TextType::left:
 			data_pos.x = pos.x + 50;
 			data_pos.y = pos.y + (size.y - textheight(data)) / 2;
 			break;
@@ -149,7 +149,7 @@ private:
 	Vector2 pos;
 	Vector2 size;
 	ButtonState button_state = ButtonState::idle;		// 默认闲置状态
-	ButtonType button_tpye = ButtonType::center;		// 默认居中
+	TextType button_tpye = TextType::center;		// 默认居中
 	LPCTSTR data = _T("");								// 按钮上文字
 	Vector2 data_pos;									// 文字位置
 
