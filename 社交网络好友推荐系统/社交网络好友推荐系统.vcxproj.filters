@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="头文件\Tree">
-      <UniqueIdentifier>{4f8b5ac2-4120-40f2-9b31-b29d6ee92baf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="头文件\screen">
       <UniqueIdentifier>{5d541bd6-0e11-400d-87da-5e217f0967f1}</UniqueIdentifier>
     </Filter>
@@ -33,12 +30,6 @@
     <ClCompile Include="search_friend_screen.cpp">
       <Filter>头文件\screen</Filter>
     </ClCompile>
-    <ClCompile Include="interests_tree.cpp">
-      <Filter>头文件\Tree</Filter>
-    </ClCompile>
-    <ClCompile Include="Tree.cpp">
-      <Filter>头文件\Tree</Filter>
-    </ClCompile>
     <ClCompile Include="recommendations_screen.cpp">
       <Filter>头文件\screen</Filter>
     </ClCompile>
@@ -49,12 +40,6 @@
   <ItemGroup>
     <ClInclude Include="people.h">
       <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Tree.h">
-      <Filter>头文件\Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="interests_tree.h">
-      <Filter>头文件\Tree</Filter>
     </ClInclude>
     <ClInclude Include="start_screen.h">
       <Filter>头文件\screen</Filter>

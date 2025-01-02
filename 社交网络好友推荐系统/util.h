@@ -68,41 +68,6 @@ inline std::vector<std::string> get_interests(std::string id) {
     }
 }
 
-inline std::string get_new_id() {
-    std::ifstream infile("people_id.txt");    // 打开用户id文件
-    std::string line;
-    std::string last_line;
-
-    if (infile.is_open()) {
-        // 读取最后一行id
-        while (std::getline(infile, line)) {
-            last_line = line;
-        }
-        infile.close();
-    }
-    else {
-        return "ERROE";
-    }
-
-    // 生成新id
-    int id = std::stoi(last_line);
-    id++;
-
-    // 使用stringstream格式化输出新ID
-    std::string new_id = std::to_string(id);
-
-    // 更新ID数据（这里假设是添加新ID到文件末尾作为新的一行）
-    std::ofstream outfile("people_id.txt", std::ios_base::app);
-    if (outfile.is_open()) {
-        outfile << new_id << std::endl;
-        outfile.close();
-    }
-    else {
-        return "ERRORwriteIN";
-    }
-    return new_id;
-}
-
 // 主要对Button中的data进行赋值
 inline std::vector<Button*> search_friends(wchar_t* search_wch,bool is_id_search) {
     // 转换类型

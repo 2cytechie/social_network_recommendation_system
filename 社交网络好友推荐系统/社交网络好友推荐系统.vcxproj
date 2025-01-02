@@ -128,11 +128,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="friends_screen.cpp" />
-    <ClCompile Include="interests_tree.cpp" />
     <ClCompile Include="recommendations_screen.cpp" />
     <ClCompile Include="search_friend_screen.cpp" />
     <ClCompile Include="start_screen.cpp" />
-    <ClCompile Include="Tree.cpp" />
     <ClCompile Include="util.h" />
     <ClCompile Include="社交网络好友推荐系统.cpp" />
   </ItemGroup>
@@ -141,13 +139,11 @@
     <ClInclude Include="button.h" />
     <ClInclude Include="friends_screen.h" />
     <ClInclude Include="interests.h" />
-    <ClInclude Include="interests_tree.h" />
     <ClInclude Include="people.h" />
     <ClInclude Include="recommendations_screen.h" />
     <ClInclude Include="screen.h" />
     <ClInclude Include="search_friend_screen.h" />
     <ClInclude Include="start_screen.h" />
-    <ClInclude Include="Tree.h" />
     <ClInclude Include="vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
