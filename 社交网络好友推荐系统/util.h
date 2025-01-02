@@ -10,13 +10,12 @@
 #include "button.h"
 #include "people.h"
 
-#include <iostream>
-
 const int MAX_ID_LEN = 8;                   // id最大长度
 const int MAX_BUTTON_SIZE = 9;              // 能显示的最大长度
 const int ERROR_ID = 10000000;
 extern People myself;
 
+// 去某id的兴趣点
 inline std::vector<std::string> get_interests(std::string id) {
     std::ifstream file("SocialMediaUsersDataset.csv");
     if (file.is_open()) {
@@ -33,6 +32,7 @@ inline std::vector<std::string> get_interests(std::string id) {
             headers.push_back(headerCell);
         }
 
+        // 兴趣列索引
         int idx = -1;
         for (size_t i = 0; i < headers.size(); ++i) {
             if (headers[i] == "Interests") {
@@ -43,21 +43,28 @@ inline std::vector<std::string> get_interests(std::string id) {
 
         if (idx != -1) {
             std::string line;
+
             // 存储提取的column列数据
             std::vector<std::string> data;
+
+            // 行号用于取出第id_height行
             int id_height = std::stoi(id) - 10000000;
             while (std::getline(file, line)) {
                 id_height--;
                 if (id_height == 0) {
+                    // 以"分割字符串
                     int start_idx = line.find('\"');
                     int end_idx = line.find_last_of('\"');
+
+                    // 取""中间的字符串
                     std::string interests_data = line.substr(start_idx, end_idx - start_idx);
                     std::stringstream ss(interests_data);
                     std::string cell;
+
+                    // 将兴趣保存到data中
                     while (std::getline(ss, cell, ',')) {
                         data.push_back(cell.substr(2, cell.size() - 3));
                     }
-
                     break;
                 }
             }
@@ -103,6 +110,7 @@ inline std::vector<Button*> search_friends(wchar_t* search_wch,bool is_id_search
             headers.push_back(headerCell);
         }
 
+        // id名字列号
         int idx = -1;
         int id_idx = -1, name_idx = -1;
         for (size_t i = 0; i < headers.size(); ++i) {
@@ -113,6 +121,8 @@ inline std::vector<Button*> search_friends(wchar_t* search_wch,bool is_id_search
                 name_idx = i;
             }
         }
+
+        // 根据是否是id搜索给idx赋值
         idx = is_id_search ? id_idx : name_idx;
 
         if (idx != -1) {
@@ -122,6 +132,7 @@ inline std::vector<Button*> search_friends(wchar_t* search_wch,bool is_id_search
                 std::stringstream ss(line);
                 std::string cell;
 
+                // 找到含serch_str的一行
                 if (line.find(search_str) != std::string::npos) {
                     int currentColumnIndex = 0;
 
@@ -141,10 +152,16 @@ inline std::vector<Button*> search_friends(wchar_t* search_wch,bool is_id_search
                             }
 
                             Button* search_friend = new Button();
+
+                            // 将ID和名字传入button类型的data中方便进行渲染
                             std::string button_data = std::to_string(std::stoi(data[id_idx]) + ERROR_ID) + "    " + data[name_idx];
+
+                            // 数据靠左渲染
                             search_friend->set_button_type(Button::TextType::left);
                             search_friend->set_data(button_data);
                             search_friends_list.push_back(search_friend);
+
+                            // 尽量优化性能，只检索max_button_size即9个匹配的数据
                             max_button_size--;
                             if (max_button_size == 0) {
                                 break;
@@ -169,6 +186,8 @@ inline std::vector<Button*> is_friend(std::vector<Button*> search_friends_list) 
 
     std::vector<Button*> button_is_friend;
     std::vector<std::string> friend_id_list = myself.get_friends();
+
+    // 查找是否已经是好友
     for (int i = 0; i < search_friends_list.size(); i++) {
         Button* button_friend = new Button();
         button_friend->set_data(add_str);
@@ -183,6 +202,7 @@ inline std::vector<Button*> is_friend(std::vector<Button*> search_friends_list) 
     return button_is_friend;
 }
 
+// 兴趣相似度
 inline double similar(Interests myInter, Interests otherInter) {
     double same_inter = 0;
     for (int i = 0; i < myInter.size(); i++) {
@@ -196,6 +216,7 @@ inline double similar(Interests myInter, Interests otherInter) {
     return same_inter / myInter.get_interests_num();
 }
 
+// 推荐的好友
 inline std::vector<Button*> recommendations_friends() {
     std::vector<Button*> recommendations_friends_list;
 
@@ -216,6 +237,7 @@ inline std::vector<Button*> recommendations_friends() {
             headers.push_back(headerCell);
         }
 
+        // 找到ID和name列号
         int id_idx = -1, name_idx = -1;
         for (size_t i = 0; i < headers.size(); ++i) {
             if (headers[i] == "UserID") {
@@ -230,16 +252,15 @@ inline std::vector<Button*> recommendations_friends() {
 
         std::string line;
 
-        size_t i = 0;
         while (std::getline(file, line)) {
-            i++;
-            std::cout << i << std::endl;
-
-            // 存储提取的column列数据
+            // 存储提取的interests列数据
             std::vector<std::string> interestsdata;
 
+            // 以"分割字符串
             int start_idx = line.find('\"');
             int end_idx = line.find_last_of('\"');
+
+            // 取出""中的数据
             std::string interests_data = line.substr(start_idx, end_idx - start_idx);
             std::stringstream ss(interests_data);
             std::string cell;
@@ -263,14 +284,18 @@ inline std::vector<Button*> recommendations_friends() {
                     data.push_back(cell);
                 }
 
+                // 将ID和名字传入button类型的data中方便进行渲染
                 std::string button_data = std::to_string(std::stoi(data[id_idx]) + ERROR_ID) + "    " + data[name_idx];
 
                 Button* recommendations_friend = new Button();
                 recommendations_friend->set_data(button_data);
+
+                // 数据靠左渲染
                 recommendations_friend->set_button_type(Button::TextType::left);
 
                 recommendations_friends_list.push_back(recommendations_friend);
 
+                // 尽量优化性能，只检索max_button_size即9个匹配的数据
                 max_button_size--;
                 if (max_button_size <= 0) {
                     break;
