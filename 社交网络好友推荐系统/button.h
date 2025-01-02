@@ -1,6 +1,11 @@
 #pragma once
 
 #include "vector2.h"
+#include<string>
+#include <cstdlib>
+#include <cwchar>
+#include <locale>
+#include <codecvt>
 #include<graphics.h>
 
 class Button {
@@ -79,12 +84,32 @@ public:
 		button_state = state;
 	}
 
-	void set_button_tpye(TextType state) {
-		button_tpye = state;
+	void set_button_type(TextType state) {
+		button_type = state;
 	}
 
 	void set_data(LPCTSTR data) {
 		this->data = data;
+	}
+
+	void set_data(std::string text) {
+		int size_needed = MultiByteToWideChar(CP_ACP, 0, text.c_str(), -1, NULL, 0);
+		wchar_t* wstr = new wchar_t[size_needed];
+		MultiByteToWideChar(CP_ACP, 0, text.c_str(), -1, wstr, size_needed);
+		data = wstr;
+	}
+
+	std::string get_data() {
+		std::string str;
+		if (data == nullptr) {
+			return "";
+		}
+		//LPCTSTR 转换成 char *
+		int num1 = WideCharToMultiByte(CP_OEMCP, NULL, data, -1, NULL, 0, NULL, FALSE);
+		char* pchar = new char[num1];
+		WideCharToMultiByte(CP_OEMCP, NULL, data, -1, pchar, num1, NULL, FALSE);
+
+		return pchar;
 	}
 
 	bool is_press() {
@@ -94,7 +119,7 @@ public:
 	// 绘制
 	void on_drow() {
 		// 计算文字打印位置
-		switch (button_tpye)
+		switch (button_type)
 		{
 		case Button::TextType::center:
 			data_pos.x = pos.x + (size.x - textwidth(data)) / 2;
@@ -149,7 +174,7 @@ private:
 	Vector2 pos;
 	Vector2 size;
 	ButtonState button_state = ButtonState::idle;		// 默认闲置状态
-	TextType button_tpye = TextType::center;		// 默认居中
+	TextType button_type = TextType::center;			// 默认居中
 	LPCTSTR data = _T("");								// 按钮上文字
 	Vector2 data_pos;									// 文字位置
 

@@ -6,7 +6,6 @@ void RecommendationsScreen::on_enter() {
 	button_back.set_data(_T("返回"));
 
 	// 调用外部接口更新搜索列表
-	// recommendations_friends_list = recommendations_friends(myself.get_interests());
 	recommendations_friends_list = recommendations_friends();
 
 	button_is_firend = is_friend(recommendations_friends_list);

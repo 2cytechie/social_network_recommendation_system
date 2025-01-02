@@ -6,12 +6,11 @@ void FriendsScreen::on_enter() {
 	button_back.set_data(_T("返回"));
 
 	// 调用外部接口更新朋友列表
-	// friends_list = find_friends(myself.friends);
 	friends_list = find_friends();
 	button_is_firend = is_friend(friends_list);
 
-	int max_show = friends_list.size() > MAX_SHOW_SIZE ? MAX_SHOW_SIZE : friends_list.size();
-	for (int i = 0; i < max_show; i++) {
+	size_t max_show = friends_list.size() > MAX_SHOW_SIZE ? MAX_SHOW_SIZE : friends_list.size();
+	for (size_t i = 0; i < max_show; i++) {
 		friends_list[i]->set_pos(SHOW_PEOPLE_X, i * SHOW_PEOPLE_SIZE.y);
 		friends_list[i]->set_size(SHOW_PEOPLE_SIZE);
 		button_is_firend[i]->set_pos(SHOW_IS_ADD_X, i * SHOW_IS_ADD_SIZE.y);
@@ -22,8 +21,8 @@ void FriendsScreen::on_enter() {
 void FriendsScreen::on_drow() {
 	button_back.on_drow();
 
-	int max_show = friends_list.size() > MAX_SHOW_SIZE ? MAX_SHOW_SIZE : friends_list.size();
-	for (int i = 0; i < max_show; i++) {
+	size_t max_show = friends_list.size() > MAX_SHOW_SIZE ? MAX_SHOW_SIZE : friends_list.size();
+	for (size_t i = 0; i < max_show; i++) {
 		friends_list[i]->on_drow();
 		button_is_firend[i]->on_drow();
 	}
@@ -32,8 +31,8 @@ void FriendsScreen::on_drow() {
 void FriendsScreen::on_input(const ExMessage& msg) {
 	button_back.on_update(msg);
 
-	int max_show = friends_list.size() > MAX_SHOW_SIZE ? MAX_SHOW_SIZE : friends_list.size();
-	for (int i = 0; i < max_show; i++) {
+	size_t max_show = friends_list.size() > MAX_SHOW_SIZE ? MAX_SHOW_SIZE : friends_list.size();
+	for (size_t i = 0; i < max_show; i++) {
 		friends_list[i]->on_update(msg);
 		button_is_firend[i]->on_update(msg);
 	}

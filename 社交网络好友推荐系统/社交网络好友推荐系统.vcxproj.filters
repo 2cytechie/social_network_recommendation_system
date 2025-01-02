@@ -80,5 +80,8 @@
     <ClInclude Include="recommendations_screen.h">
       <Filter>头文件\screen</Filter>
     </ClInclude>
+    <ClInclude Include="interests.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

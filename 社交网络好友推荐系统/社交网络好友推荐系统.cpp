@@ -1,6 +1,4 @@
-﻿#include<iostream>
-#include<string>
-#include<graphics.h>
+﻿#include<graphics.h>
 #include<chrono>
 #include<thread>
 
@@ -9,10 +7,11 @@
 #include "recommendations_screen.h"
 #include "add_interests_screen.h"
 #include "friends_screen.h"
+#include "people.h"
 
 IMAGE white_screen;							// 空白界面图片
 
-// People myself("空白");					// 该用户信息
+People myself("10100001","空白");			// 该用户信息
 
 StartScreen start_screen;					// 开始界面
 Screen* friends_screen = nullptr;			// 好有列表界面
@@ -20,7 +19,39 @@ Screen* search_friend_screen = nullptr;		// 搜索好友界面
 Screen* add_interests_screen = nullptr;		// 添加爱好界面
 Screen* recommendations_screen = nullptr;	// 查看推荐界面
 
+void load_people(People &p) {
+    std::ifstream file("SocialMediaUsersDataset.csv");
+
+    if (file.is_open()) {
+		std::string line;
+		// 存储提取的column列数据
+		std::vector<std::string> data;
+		int id_height = std::stoi(p.get_id()) - 10000000 + 1;
+		while (std::getline(file, line)) {
+			id_height--;
+			if (id_height <= 0) {
+				int start_idx = line.find('\"');
+				int end_idx = line.find_last_of('\"');
+				std::string interests_data = line.substr(start_idx, end_idx - start_idx);
+				std::stringstream ss(interests_data);
+				std::string cell;
+				while (std::getline(ss, cell, ',')) {
+					data.push_back(cell.substr(2, cell.size() - 3));
+				}
+				break;
+			}
+		}
+		// 输出提取的column列数据
+		for (const auto& d : data) {
+			p.add_interest(d);
+		}
+        file.close();
+    }
+}
+
 void load_resources() {
+	load_people(myself);
+
 	AddFontResourceEx(_T("resources/IPix.ttf"), FR_PRIVATE, NULL);
 
 	loadimage(&white_screen, _T("resources/white.png"));

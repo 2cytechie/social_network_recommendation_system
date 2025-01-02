@@ -2,7 +2,6 @@
 
 #include "screen.h"
 #include "button.h"
-// #include "people.h"
 
 extern Screen* friends_screen;
 extern Screen* search_friend_screen;
