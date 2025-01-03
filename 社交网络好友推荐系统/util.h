@@ -15,7 +15,7 @@ const int MAX_BUTTON_SIZE = 9;              // 能显示的最大长度
 const int ERROR_ID = 10000000;
 extern People myself;
 
-// 去某id的兴趣点
+// 获取某id的兴趣点
 inline std::vector<std::string> get_interests(std::string id) {
     std::ifstream file("SocialMediaUsersDataset.csv");
     if (file.is_open()) {

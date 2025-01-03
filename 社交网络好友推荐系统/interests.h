@@ -23,6 +23,7 @@ public:
 		}
 	}
 
+	// 获取兴趣点
 	double get_interests_num() {
 		double sum = 0;
 		for (auto& inter : interests) {

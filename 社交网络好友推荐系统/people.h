@@ -17,9 +17,7 @@ public:
 		this->name = name;
 	}
 
-	~People() {
-		id = "-1";
-	}
+	~People() = default;
 
 	std::string get_id() {
 		return id;
