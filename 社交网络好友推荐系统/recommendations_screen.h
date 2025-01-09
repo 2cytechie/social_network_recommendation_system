@@ -22,7 +22,7 @@ public:
 
 private:
 	std::vector<Button*> recommendations_friends_list;		// 推荐好友列表
-	std::vector<Button*> button_is_firend;					// 添加/已添加按键
+	std::vector<Button*> button_is_friend;					// 添加/已添加按键
 	Button button_back;										// 返回键
 
 	const int MAX_SHOW_SIZE = 9;							// 显示最大用户信息

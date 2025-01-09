@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35514.174 d17.12
+VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "社交网络好友推荐系统", "社交网络好友推荐系统\社交网络好友推荐系统.vcxproj", "{05E621A0-726A-4230-B0EE-0A00A5050844}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "社交网络好友推荐系统安装包", "社交网络好友推荐系统安装包\社交网络好友推荐系统安装包.vdproj", "{2DFB6617-CF03-4006-98F9-D8E2E0EA6483}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{05E621A0-726A-4230-B0EE-0A00A5050844}.Release|x64.Build.0 = Release|x64
 		{05E621A0-726A-4230-B0EE-0A00A5050844}.Release|x86.ActiveCfg = Release|Win32
 		{05E621A0-726A-4230-B0EE-0A00A5050844}.Release|x86.Build.0 = Release|Win32
+		{2DFB6617-CF03-4006-98F9-D8E2E0EA6483}.Debug|x64.ActiveCfg = Debug
+		{2DFB6617-CF03-4006-98F9-D8E2E0EA6483}.Debug|x86.ActiveCfg = Debug
+		{2DFB6617-CF03-4006-98F9-D8E2E0EA6483}.Release|x64.ActiveCfg = Release
+		{2DFB6617-CF03-4006-98F9-D8E2E0EA6483}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

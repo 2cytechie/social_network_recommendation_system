@@ -13,6 +13,7 @@
 const int MAX_ID_LEN = 8;                   // id最大长度
 const int MAX_BUTTON_SIZE = 9;              // 能显示的最大长度
 const int ERROR_ID = 10000000;
+
 extern People myself;
 
 // 获取某id的兴趣点
@@ -76,7 +77,7 @@ inline std::vector<std::string> get_interests(std::string id) {
 }
 
 // 主要对Button中的data进行赋值
-inline std::vector<Button*> search_friends(wchar_t* search_wch,bool is_id_search) {
+inline std::vector<Button*> search_friends(const wchar_t* search_wch,const bool is_id_search) {
     // 转换类型
     std::string search_str;
     if (search_wch == nullptr) {
